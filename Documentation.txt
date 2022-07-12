@@ -1,0 +1,41 @@
+1. preprocess
+	a. transformData
+		takes raw data, converts them into utility matrix and returns
+	b. makeMatrix
+		reads data from csv files, preprocesses them and returns train and test utility matrices
+2. collaborative
+	a. get_sim_matrix
+		returns similarity (correlation coefficients) matrix
+	b. collaborative_without_baseline
+		takes training data, number of nearest neighbours considered
+		returns reconstructed matrix by predicting test ratings
+	c. collaborative_with_baseline
+		takes training data, number of nearest neighbours considered
+		returns reconstructed matrix by predicting test ratings taking baseline estimates into account
+	d. startCollaborative
+		acts like driver for collaboratory
+		prints details of RMSE, SRC, Precision on Top K for this technique
+3. svd
+	a. svd_decomp
+		takes in the data matrix A and decompose it to U, Sigma and Vt using derivation
+	b. svd_decomp_90
+		takes in the decomposed U, Sigma and Vt and returns the new ones having 90% energy retainment
+	c. runSVD
+		driver function to make predictions over test data using similarity matrix
+		also runs the metrics to get results
+	d. runSVD90
+		driver function to make predictions over test data using similarity matrix for 90% retainment
+		also runs the metrics to get results
+	e. startSVD
+		runs the necessary functions to execute the program
+4. cur
+	a. CUR
+		takes in the data matrix A and decomposes it to C, U and R and returns the decomposed matrices.
+	b. CUR_90
+		takes in the data matrix A and decomposes it to C, U and R and then reduces the dimensions by preserving 90% data.
+	c. CUR_driver
+		this calls the both the above mentioned functions and also evaluates the answer with the different metrics.
+5. metrics
+	a. analyse
+		takes predicted and testing data
+		returns RMSE, SRC, Precision on Top K metrics
